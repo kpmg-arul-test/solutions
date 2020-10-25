@@ -1,0 +1,20 @@
+def get_nested(data, args):
+    if args and data:
+        if '/' in args:
+            keys = args.split('/')
+        else:
+            keys = args
+        element  = keys.pop(0)
+        if element:
+            value = data.get(element)
+            return value if len(args) == 0 else get_nested(value, keys)
+
+data = {
+    "x": {
+        "y": {
+            "z": "a"
+        }
+    }
+}
+
+print(get_nested(data, 'x/y/z'))

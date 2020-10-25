@@ -1,0 +1,8 @@
+import requests
+
+def getInstanceMetaValueForKey(arg):
+    data = requests.get("http://metadata/computeMetadata/v1/instance/?recursive=true",
+         headers={'Metadata-Flavor': 'Google'}).json()
+    print(data.get(arg))
+
+getInstanceMetaValueForKey("machineType")
