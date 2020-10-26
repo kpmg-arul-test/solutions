@@ -50,15 +50,30 @@ module "instancegroup" {
   private_subnet        = module.vpc.private_subnet
 }
 
+module "cloudsql" {
+  source                     = "./modules/cloudsql"
+  region                     = var.region
+  availability_type          = var.availability_type
+  sql_instance_size          = var.sql_instance_size
+  sql_disk_type              = var.sql_disk_type
+  sql_disk_size              = var.sql_disk_size
+  sql_require_ssl            = var.sql_require_ssl
+  sql_master_zone            = var.sql_master_zone
+  sql_connect_retry_interval = var.sql_connect_retry_interval
+  sql_replica_zone           = var.sql_replica_zone
+  sql_user                   = var.sql_user
+  sql_pass                   = var.sql_pass
+}
 
-# module "servers" {
-#   source                = "./modules/servers"
-#   name                  = var.name
-#   project_id            = var.project_id
-#   region                = var.region
-#   azs                   = var.azs
-#   machine_type          = var.machine_type
-#   web_server_labels     = var.web_server_labels
-#   app_server_labels     = var.app_server_labels
-#   private_subnet        = module.vpc.private_subnet
-# }
+
+module "servers" {
+  source                = "./modules/servers"
+  name                  = var.name
+  project_id            = var.project_id
+  region                = var.region
+  azs                   = var.azs
+  machine_type          = var.machine_type
+  web_server_labels     = var.web_server_labels
+  app_server_labels     = var.app_server_labels
+  private_subnet        = module.vpc.private_subnet
+}
