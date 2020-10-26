@@ -19,7 +19,7 @@
 
 ### Three tier architetcure   
 1. Http loadbalancer will receive requeust and forward to managed instance groups  where web servers are running   
-1. Webservers forwward request to appservers   
+1. Webservers forward request to appservers   
 1. Appservers are connected to Cloud SQL database   
 
 ###  Terraform commands   
