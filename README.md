@@ -2,11 +2,11 @@
 
 ## Challenge1   
 
-##  Prerequisites   
-
-### Setting Credentials   
+###  Prerequisites   
 1. This project is done for GCP   
-1. Create GCP account and Project   
+1. Create GCP account and Project    
+
+### Setting Credentials    
 1. Create terraform Service Account in Project (where we want to deploy resources)   
 1. Create key.json and down load the file and store in project root directory   
 1. Configure key.json in credential field of procider.tf and backend.tf   
